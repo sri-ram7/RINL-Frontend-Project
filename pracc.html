@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Photo</title>
+</head>
+<body>
+  <h2>Upload Photo</h2>
+  <input type="file" id="photoInput" accept="image/*">
+  <button onclick="savePhoto()">Submit</button>
+
+  <script>
+    function savePhoto() {
+      const input = document.getElementById('photoInput');
+      const file = input.files[0];
+
+      if (!file) {
+        alert("Please select a photo.");
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        const base64Image = e.target.result;
+        localStorage.setItem("uploadedPhoto", base64Image);
+        window.location.href = "pracc2.html";
+      };
+
+      reader.readAsDataURL(file); // Convert to Base64
+    }
+  </script>
+</body>
+</html>

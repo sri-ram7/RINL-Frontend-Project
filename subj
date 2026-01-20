@@ -1,0 +1,68 @@
+1. document.querySelector('input[name="gender"]:checked')
+This finds the radio input with name gender that is currently checked (selected).
+
+
+ gender: document.querySelector('input[name="gender"]:checked')?.value || "",
+
+2. ?.value
+This is optional chaining — a safe way to access .value only if the element exists.
+
+If no radio button is selected, it won’t throw an error — it just returns undefined.
+
+3. || ""
+If the result is undefined (i.e., no radio button is selected), it falls back to an empty string "".
+
+
+
+🧠 localStorage.setItem("formData", JSON.stringify(formData)); — What Does It Do?
+This line of JavaScript saves your form data to the browser's local storage, so you can retrieve and use it later — even on a different page.
+
+🧱 Let's Break It Down:
+🔹 localStorage.setItem(key, value)
+Saves data in the browser's storage.
+
+key is the name you’ll use to retrieve the data later.
+
+value must be a string (not an object!).
+
+🔹 formData is a JavaScript object:
+js
+Copy
+Edit
+const formData = {
+  name: "John",
+  age: 25,
+  state: "Delhi"
+};
+🔹 JSON.stringify(formData)
+Converts the formData object into a string so that it can be stored in localStorage.
+
+js
+Copy
+Edit
+'{"name":"John","age":25,"state":"Delhi"}'
+✅ So This Line:
+js
+Copy
+Edit
+localStorage.setItem("formData", JSON.stringify(formData));
+✅ Stores all your form inputs (name, age, state, etc.) into localStorage under the key "formData" in string format.
+
+✅ How to Use It Later:
+On another page (like index6.html), you retrieve and parse it back into an object:
+
+js
+Copy
+Edit
+const data = JSON.parse(localStorage.getItem("formData"));
+console.log(data.name); // "John"
+🔁 Summary:
+Part	Meaning
+localStorage	Browser storage that stays even after reloads
+setItem("formData", ...)	Store data with key formData
+JSON.stringify()	Converts object to string for storage
+JSON.parse()	Converts string back to object for use
+
+Let me know if you wan
+
+

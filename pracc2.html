@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Uploaded Photo</title>
+</head>
+<body>
+  <h2>Uploaded Photo Preview</h2>
+  <div id="photoContainer">
+    <img id="photo" alt="Uploaded Photo" style="max-width: 100%; height: auto;">
+  </div>
+
+  <script>
+    const imageData = localStorage.getItem("uploadedPhoto");
+
+    if (imageData) {
+      document.getElementById("photo").src = imageData;
+    } else {
+      document.getElementById("photoContainer").innerHTML = "<p>No photo uploaded.</p>";
+    }
+  </script>
+</body>
+</html>
+
